@@ -1,66 +1,85 @@
 #import arduino lib
 #import esp
-#this input is from esp module
-#get get input from esp module
+#get input from esp module
 global led
-led =int(input('Indication level leds'))
+led =int(input('Indication level leds\n'))
 def water_level (level):
     if(level==1):
-        print('start filling')
+        print('start filling\n')
     elif(level==2):
-        print('notify or ask')
+        print('notify or ask\n')
     elif (level==3):
-        print('button')
+        print('button\n')
     elif(level>3):
-        print('dont ask water is full')
+        print('dont ask water is full\n')
     else:
-        print('get the data again')
+        print('get the data again\n')
 
-water_level(led)
-
-
-print('notify android device using static ip\n')
-run=int(input('what is The Duration you want to run the machine\n'))
-
-#def true(levl):
-#    if()
 
 
 def override_switch(level,run):
+    print('notify android device using static ip\n')
+    run=int(input('what is The Duration you want to run the machine\n'))
+
     if(run>0):
-        print('TIME IS VALID')
+        print('TIME IS VALID\n')
         if (level==1):
-            print('ask if automation is reqiure')
+            print('ask if automation is reqiure\n')
         elif(level==2):
-            print('it is half fill')
+            print('it is half fill\n')
         elif(level==3):
-            print('water if 3 quater filled')
+            print('water if 3 quater filled\n')
         else:
-            print('water is too much or device is not responding')
+            print('water is too much or device is not responding\n')
     else:
-        print('notify the user for the worng input')
+        print('notify the user for the worng input\n')
     return level
     return run
-override_switch(led,run)
-
-output_not=input('do  you want to see the water level')
 
 
 def output (level,trueorfalse):
-    print('the machine will run for (Min)',run)
+    print('the machine will run for (Min) :',run)
     if(run>0):
         if(trueorfalse=='true'):
-            print('DEVICE IS CONNECTED')
-            if(level>0):
-                print('water is available')
-            elif(levels<0):
-                print('no water')
+            print('DEVICE IS CONNECTED\n')
+            if(led>0):
+                print('water is available\n')
+            elif(led<0):
+                print('no water\n')
             else:
-                print('device not responding')
+                print('device not responding\n')
         else:
-            print('device is not connected')
+            print('device is not connected\n')
     else:
-        print('nothing')
+        print('nothing\n')
 
+if(led>4):
+    print('Please Enter th vaild led input or get the inpout led value from esp module')
+    flag=1
+    exit()
+else:
+    print('proceed')
+    flag=0
 
-output(override_switch,output_not)
+print('1.Get info from esp ')
+print('2.Device input ')
+print('3.Get the status from esp module ')
+print('4.Exit ')
+
+def menu(inputmenu):
+    if(flag==0):
+        if(inputmenu==1):
+            water_level(led)
+        elif(inputmenu==2):
+            output_not=input('do  you want to see the water level')
+            override_switch(output_not)
+        elif(inputmenu==3):
+            output(override_switch,output_not)
+        elif(inputmenu==4):
+            exit()
+        else:
+            print('enter valid option')
+    else:
+        print('')
+inputmenu=int(input('Enter your desired menu option'))
+menu(inputmenu)

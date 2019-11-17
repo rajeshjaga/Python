@@ -1,7 +1,7 @@
 myname='rajesh'
 
 def my_name():
-    #global myname
+    global myname
     myname='lucifer'
     print('the name of the person is ',myname)
 
