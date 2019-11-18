@@ -7,10 +7,10 @@ class calc:
         self.divide=a%n
 
     def add (self):
-        print(f'The Addition of {self.a} and {self.n} are {self.add}')
-        print(f'The Diffrence of {self.a} and {self.n} are {self.subtract}')
-        print(f'The Multiplication of {self.a} and {self.n} are {self.multiply}')
-        print(f'The Division of {self.a} and {self.n} are {self.divide}')
+        print(f'The Result of  Addition are {self.add}')
+        print(f'The Result of Difference are {self.subtract}')
+        print(f'The Multiplication  are {self.multiply}')
+        print(f'The Division of  are {self.divide}')
 
 a=int(input('Enter the value of a :'))
 n=int(input('Enter the value of b :'))
