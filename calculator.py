@@ -6,7 +6,7 @@ class calc:
         self.multiply=a*n
         self.divide=a%n
 
-    def add (self):
+    def ad (self):
         print(f'The Result of  Addition are {self.add}')
         print(f'The Result of Difference are {self.subtract}')
         print(f'The Multiplication  are {self.multiply}')
@@ -16,4 +16,4 @@ a=int(input('Enter the value of a :'))
 n=int(input('Enter the value of b :'))
 
 note=calc(a,n)
-note.add()
+note.ad()
