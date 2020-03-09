@@ -1,3 +1,12 @@
-import os
+import platform
 
-print(os.name)
+
+of=platform.system()
+
+
+if(of=="Windows"):
+    print("windows")
+elif(of=="Darwin"):
+    print("Macos")
+elif(of=="Linux"):
+    print("Linux")
