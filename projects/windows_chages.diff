@@ -1,0 +1,11 @@
+--- ./html/win.py	2020-06-03 10:12:05.441877100 +0530
++++ win_changed.py	2020-06-08 21:58:15.259234500 +0530
+@@ -25,7 +25,7 @@
+     stylepath = os.path.join(mypath, "style")
+     os.mkdir(stylepath)
+     os.chdir(stylepath)
+-    f2 = open("style.scss", "w+")
++    f2 = open("style.css", "w+")
+     css = """*{
+     margin:0;
+     padding: 0;
