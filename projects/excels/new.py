@@ -1,8 +1,7 @@
-from tkinter import *
+import tkinter
 import pandas as pd
 
 def submit_fields():
-    print("reached here")
     path='index.xlsx'
     df1=pd.read_excel(path)
     SeriesA=df1['Date']
@@ -12,9 +11,9 @@ def submit_fields():
     SeriesE=df1['Price']
     A=pd.Series(entry1.get())
     B=pd.Series(entry2.get())
-    C=pd.Series(entry3.get())
-    D=pd.Series(entry4.get())
-    E=pd.Series(entry5.get())
+    C=pd.Series(float(entry3.get()))
+    D=pd.Series(float(entry4.get()))
+    E=C*D
     SeriesA=SeriesA.append(A)
     SeriesB=SeriesB.append(B)
     SeriesC=SeriesC.append(C)
@@ -22,35 +21,35 @@ def submit_fields():
     SeriesE=SeriesE.append(E)
     df2=pd.DataFrame({"Date":SeriesA,"Vehicle No":SeriesB,"Rate":SeriesC,"Quantity":SeriesD,"Price":SeriesE})
     df2.to_excel(path,index=False)
-    entry1.delete(0,END)
-    entry2.delete(0,END)
-    entry3.delete(0,END)
-    entry4.delete(0,END)
-    entry5.delete(0,END)
+    entry1.delete(0,tkinter.END)
+    entry2.delete(0,tkinter.END)
+    entry3.delete(0,tkinter.END)
+    entry4.delete(0,tkinter.END)
 
 
-master=Tk()
+master=tkinter.Tk()
 
-Label(master, text="Date", anchor="e",justify=LEFT).grid(row=0)
-Label(master, text="Vehicle NO").grid(row=1)
-Label(master, text="Rate").grid(row=2)
-Label(master, text="Quantity").grid(row=3)
-Label(master, text="Price").grid(row=4)
+canvas=tkinter.Canvas(master,height=450,width=500,bg="#263d42")
+canvas.pack()
+frame = tkinter.Frame(master,bg="white")
+frame.place(relheight=0.8,relwidth=0.8,relx=0.1,rely=0.1)
 
-entry1= Entry(master)
-entry2= Entry(master)
-entry3= Entry(master)
-entry4= Entry(master)
-entry5= Entry(master)
+tkinter.Label(frame, text="Date",width=20,height=3,bg="white",font="16").grid(row=0 )
+tkinter.Label(frame, text="Vehicle NO",width=20,height=3,bg="white",font="16").grid(row=1)
+tkinter.Label(frame, text="Rate",width=20,height=3,bg="white",font="16").grid(row=2)
+tkinter.Label(frame, text="Quantity",width=20,height=3,bg="white",font="16").grid(row=3)
+
+entry1= tkinter.Entry(frame,width=20,bg="#ECECEC",font="18")
+entry2= tkinter.Entry(frame,width=20,bg="#ECECEC",font="18")
+entry3= tkinter.Entry(frame,width=20,bg="#ECECEC",font="18")
+entry4= tkinter.Entry(frame,width=20,bg="#ECECEC",font="18")
 
 entry1.grid(row=0,column=1)
 entry2.grid(row=1,column=1)
 entry3.grid(row=2,column=1)
 entry4.grid(row=3,column=1)
-entry5.grid(row=4,column=1)
 
-Button(master, text="quit",command=master.quit).grid(row=6,column=0,pady=4)
-Button(master, text="submit",command=submit_fields).grid(row=6,column=1,pady=4)
+tkinter.Button(frame, text="Submit",command=submit_fields ,height=2,width=10,bg="#6AC710").grid(row=6,pady=10,padx=15)
 
 
-mainloop()
+tkinter.mainloop()
